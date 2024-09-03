@@ -1,23 +1,27 @@
 import './App.css';
 import './styles.css';
 
+
+function Square(){
+  return <button className='square'>1</button>
+}
 function Board() {
   return (
     <>
     <div>
-      <button >1</button>
-      <button >2</button>
-      <button >3</button>
+      <Square />
+      <Square />
+      <Square />
     </div>
     <div>
-      <button >4</button>
-      <button >5</button>
-      <button >6</button>
+      <Square />
+      <Square />
+      <Square />
     </div>
     <div>
-      <button >7</button>
-      <button >8</button>
-      <button >9</button>
+      <Square />
+      <Square />
+      <Square />
     </div>
     </>
   );
