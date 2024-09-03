@@ -3,7 +3,11 @@ import './styles.css';
 
 
 function Square({value}){
-  return <button className='square'>{value}</button>
+  function handleClick(){
+    console.log("Clicked Me!!!");
+  }
+
+  return <button className='square' onClick={handleClick}>{value}</button>
 }
 function Board() {
   return (
