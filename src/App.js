@@ -4,11 +4,16 @@ import "./styles.css";
 
 function Square({ value, onSquareClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button
+      className="square btn btn-outline-dark btn-lg"
+      onClick={onSquareClick}
+      style={{ width: "80px", height: "80px", fontSize: "2rem" }}
+    >
       {value}
     </button>
   );
 }
+
 function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -27,6 +32,11 @@ function Board() {
     setXIsNext(!xIsNext);
   }
 
+  function startNewGame() {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
+  }
+
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -34,9 +44,10 @@ function Board() {
   } else {
     status = "Next Player: " + (xIsNext ? "X" : "O");
   }
+
   return (
-    <>
-      <div className="status">{status}</div>
+    <div className="container mt-5 text-center">
+      <div className="status mb-3 h4">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -52,7 +63,10 @@ function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-    </>
+      <button className="btn btn-warning btn-lg mt-4" onClick={startNewGame}>
+        Start New Game
+      </button>
+    </div>
   );
 }
 
